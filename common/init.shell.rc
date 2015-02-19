@@ -1,0 +1,50 @@
+# Copyright (C) 2012 The Android Open Source Project
+
+# Copyright (c) 2014 NVIDIA Corporation.  All Rights Reserved.
+#
+# NVIDIA Corporation and its licensors retain all intellectual property and
+# proprietary rights in and to this software and related documentation.  Any
+# use, reproduction, disclosure or distribution of this software and related
+# documentation without an express license agreement from NVIDIA Corporation
+# is strictly prohibited.
+
+# Report shell boot completion for tools such as sanity.
+
+service bootcomplete /system/bin/logwrapper /system/bin/sh -c "echo Shell Boot is finished"
+    # Print the boot completion message in class main. At that point
+    # services required for shell-only tests are up, as well as logcat.
+    class main
+    oneshot
+
+# Override some services to prevent them from starting at boot time.
+# Note that in init.rc the first definition of a service is the one that
+# takes precedence.
+
+service servicemanager /system/bin/servicemanager
+    class core
+    user system
+    group system
+    critical
+    onrestart restart healthd
+#   onrestart restart zygote
+    onrestart restart media
+#   onrestart restart surfaceflinger
+    onrestart restart drm
+
+service surfaceflinger /system/bin/surfaceflinger
+    class main
+    user system
+    group graphics drmrpc
+#   onrestart restart zygote
+    disabled
+
+service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server
+    class main
+    socket zygote stream 660 root system
+    onrestart write /sys/android_power/request_state wake
+    onrestart write /sys/power/state on
+    onrestart restart media
+    onrestart restart netd
+    disabled
+
+import /init.base.rc

@@ -1,0 +1,359 @@
+{
+    "copyright" : "Copyright (c) 2014, NVIDIA CORPORATION.  All rights reserved.",
+    "family" : "TN8-Public",
+    "version" : "2.0",
+    "#" : "-------- PUBLIC SW/HW SPEC --------",
+    "hw" : {
+        "." : [ "desc" ],
+        "#" : "--------- P1761-A00 ---------",
+        "tn8-p1761-a00" : {
+            "desc" : "P1761-A00/AUO 19x12 panel/2GB/Battery",
+            "bases" : ["&disp-19x12", "&p1761-2gb"],
+            "id" : "P1761-A00",
+            "config" : "default",
+            "sn" : "",
+            "proc" : {
+                "id"  : "1761"
+            },
+            "pmu" : {
+                "id"  : "1936"
+            },
+            "misc" : {}
+        },
+        "tn8-p1761-a00-no-batt" : {
+            "desc" : "P1761-A00/AUO 19x12 panel/2GB/No Battery",
+            "bases" : ["tn8-p1761-a00"],
+            "config" : "no-batt"
+        },
+        "tn8-p1761-a00-4gb-battery" : {
+            "desc" : "P1761/AUO 19x12 panel/4GB/Battery",
+            "bases" : ["tn8-p1761-a00", "&p1761-4gb" ],
+            "config" : "4gb"
+        },
+        "tn8-p1761-a00-4gb-no-batt" : {
+            "desc" : "P1761-A00/AUO 19x12 panel/4GB/No Battery",
+            "bases" : ["tn8-p1761-a00", "&p1761-4gb" ],
+            "config" : "4gb-no-batt"
+        },
+        "tn8-p1761-a00-4gb-no-batt-12x8" : {
+            "desc" : "P1761-A00/AUO 12x8 panel/4GB/No Battery",
+            "bases" : ["tn8-p1761-a00", "&disp-12x8", "&p1761-4gb" ],
+            "config" : "4gb-no-batt"
+        },
+        "tn8-p1761-a00-no-batt-12x8" : {
+            "desc" : "P1761-A00/AUO 12x8 panel/2GB/No Battery",
+            "bases" : ["tn8-p1761-a00", "&disp-12x8"],
+            "config" : "no-batt"
+        },
+        "#" : "--------- P1761-A02 ---------",
+        "tn8-p1761-a02" : {
+            "desc" : "P1761-A02/AUO 19x12 panel/2GB/Battery",
+            "id" : "P1761-A02",
+            "bases" : ["tn8-p1761-a00"],
+            "proc" : {
+                "fab" : "2"
+            }
+        },
+        "#" : "--------- P1761-A03 ---------",
+        "tn8-p1761-a03" : {
+            "desc" : "P1761-A03/AUO 19x12 panel/2GB/Battery",
+            "id" : "P1761-A03",
+            "touch" : "1",
+            "bases" : ["tn8-p1761-a00"],
+            "proc" : {
+                "fab" : "3"
+            }
+        },
+        "#" : "--------- E1784-A00 ---------",
+        "tn8-e1784-a00" : {
+            "desc" : "P1784-A00/AUO 19x12 panel/2GB/Battery",
+            "bases" : ["tn8-p1761-a00", "&e1784-a00" ]
+        },
+        "tn8-e1784-a00-2gb-924" : {
+            "desc" : "P1784-A00/AUO 19x12 panel/2GB-924MHz/Battery",
+            "bases" : ["tn8-p1761-a00", "&e1784-a00" ],
+            "config" : "2gb-924"
+        },
+        "tn8-e1784-a00-2gb-924-no-batt" : {
+            "desc" : "P1784-A00/AUO 19x12 panel/2GB-924MHz/No Battery",
+            "bases" : ["tn8-p1761-a00", "&e1784-a00" ],
+            "config" : "2gb-924-no-batt"
+        },
+        "tn8-e1784-a00-no-batt" : {
+            "desc" : "E1784-A00/AUO 19x12 panel/2GB/No Battery",
+            "bases" : ["tn8-p1761-a00-no-batt", "&e1784-a00" ]
+        },
+        "tn8-e1784-a00-4gb-no-batt" : {
+            "desc" : "E1784-A00/AUO 19x12 panel/4GB/No Battery",
+            "bases" : ["tn8-p1761-a00-4gb-no-batt", "&e1784-a00" ]
+        },
+        "tn8-e1784-a00-4gb-no-batt-12x8" : {
+            "desc" : "E1784-A00/AUO 12x8 panel/4GB/No Battery",
+            "bases" : ["tn8-p1761-a00-4gb-no-batt-12x8", "&e1784-a00" ]
+        },
+        "#" : "--------- E1922-A00 ---------",
+        "tn8-e1922-a00" : {
+            "desc" : "E1922/AUO 19x12/3GB",
+            "base" : "tn8-p1761-a00",
+            "id" : "E1922-A00",
+            "proc" : {
+                "id"  : "1922",
+                "sku" : "1100"
+            }
+        },
+        "#" : "--------- Legacy Support ---------",
+        "tn8" : {
+            "desc" : "Equivalent to the old nct_tn8.txt. Should be deprecated.",
+            "cm" : "0",
+            "lbh": "0",
+            "factory_mode": "0",
+            "gps_id" : "0"
+        },
+
+        "#" : "--------- E1780-1000------------",
+        "shield_ers" : {
+            "desc" : "Shield ERS E1780-1000-A03",
+            "id" : "E1780-1000-A03",
+            "proc" : {
+                "id"  : "1780",
+                "sku" : "1000"
+            }
+        },
+        "shield_e1780_e1733" : {
+            "desc" : "Shield ERS E1780-1000-A03 with E1733",
+            "bases" : ["shield_ers", "&pmu_e1733"],
+            "config" : "e1733"
+        },
+        "shield_e1780_e1735" : {
+            "desc" : "Shield ERS E1780-1000-A03 with E1735",
+            "bases" : ["shield_ers", "&pmu_e1735"],
+            "config" : "e1735"
+        },
+
+        "#" : "--------- E1792-1100 ---------",
+        "shield_e1792_e1733" : {
+            "desc" : "Shield ERS E1792-1100 with E1733",
+            "bases" : ["&e1792-1100", "&pmu_e1733"],
+            "config" : "e1733"
+        },
+        "shield_e1792_e1735" : {
+            "desc" : "Shield ERS E1792-1100 with E1735",
+            "bases" : ["&e1792-1100", "&pmu_e1735"],
+            "config" : "e1735"
+        },
+
+        "laguna" : {
+            "desc" : "Laguna"
+        },
+
+        "#" : "--------- P1859 ---------",
+        "p1859" : {
+            "desc" : "p1859 SKU56/2GB",
+            "id" : "P1859"
+        },
+        "p1859-4gb" : {
+            "desc" : "p1859 SKU50/4GB",
+            "id" : "P1859",
+            "config" : "sku50"
+        },
+        "#references" : "############################################",
+        "&e1784-a00" : {
+            "id" : "E1784-A00",
+            "proc" : {
+                "id" : "1784",
+                "sku" : "1101"
+            }
+        },
+        "&p1761-2gb" : {
+            "proc" : {
+                "sku" : "1270"
+            }
+        },
+        "&p1761-4gb" : {
+            "proc" : {
+                "sku" : "1470"
+            }
+        },
+        "&disp-12x8" : {
+            "disp" : {
+                "id"  : "1807",
+                "sku" : "0"
+            }
+        },
+        "&disp-19x12" : {
+            "disp" : {
+                "id"  : "1937",
+                "sku" : "1000"
+            }
+        },
+        "&e1792-1100" : {
+            "id" : "E1792-1100",
+            "proc" : {
+                "id"  : "1792",
+                "sku" : "1100"
+            }
+        },
+        "&pmu_e1733" : {
+            "pmu" : {
+                "id"  : "1733"
+            }
+        },
+        "&pmu_e1735" : {
+            "pmu" : {
+                "id"  : "1735"
+            }
+        }
+    },
+    "sw" : {
+        "." : [ "compatible", "desc" ],
+        "P1761-A00" : {
+            "desc" : "P1761-A00",
+            "bases" : [ "&common", "&2gb-792" ],
+            "default" : {
+                "dtb" : "tegra124-tn8-p1761-1270-a00-battery.dtb"
+            },
+            "4gb" : {
+                "dtb" : "tegra124-tn8-p1761-1470-a00.dtb",
+                "bct" : "flash_e1761_4gb_792.cfg"
+            },
+            "2gb-924" : {
+                "bct" : "flash_e1761_2gb_924.cfg"
+            },
+            "2gb-924-no-batt" : {
+                "dtb" : "tegra124-tn8-p1761-1270-a00.dtb",
+                "bct" : "flash_e1761_2gb_924.cfg",
+                "odm" : "0x9c008"
+            },
+            "4gb-no-batt" : {
+                "dtb" : "tegra124-tn8-p1761-1470-a00.dtb",
+                "bct" : "flash_e1761_4gb_792.cfg",
+                "odm" : "0x9c008"
+            },
+            "no-batt" : {
+                "dtb" : "tegra124-tn8-p1761-1270-a00.dtb",
+                "odm" : "0x9c008"
+            }
+        },
+        "P1761-A02" : {
+            "bases" : [ "&common", "&2gb-924" ],
+            "default" : {
+                "dtb" : "tegra124-tn8-p1761-1270-a02-battery.dtb"
+            }
+        },
+        "P1761-A03" : {
+            "bases" : [ "&common", "&2gb-924" ],
+            "default" : {
+                "dtb" : "tegra124-tn8-p1761-1270-a03-battery.dtb"
+            }
+        },
+        "E1784-A00" : {
+            "desc" : "P1784-A00",
+            "bases" : [ "P1761-A00" ],
+            "default" : {
+                "dtb" : "tegra124-tn8-e1784-1101-a00-battery.dtb"
+            },
+            "4gb" : {
+                "dtb" : "tegra124-tn8-e1784-1100-a00.dtb"
+            },
+            "2gb-924-no-batt" : {
+                "dtb" : "tegra124-tn8-e1784-1101-a00.dtb"
+            },
+            "4gb-no-batt" : {
+                "dtb" : "tegra124-tn8-e1784-1100-a00.dtb"
+            },
+            "no-batt" : {
+                "dtb" : "tegra124-tn8-e1784-1101-a00.dtb"
+            }
+        },
+        "E1922-A00" : {
+            "bases" : [ "&common" ],
+            "default" : {
+                "dtb" : "tegra124-tn8-e1922-1100-a00.dtb",
+                "odm" : "0x9c008",
+                "bct" : "flash_e1922_3gb_924.cfg"
+            }
+        },
+        "tn8" : {
+            "default" : {
+                "dtb" : "tegra124-tn8-e1780-1100-a02.dtb",
+                "cfg" : "tn8_flash.cfg"
+            }
+        },
+        "E1780-1000-A03" : {
+            "default" : {
+                "dtb" : "tegra124-ardbeg-e1780-1000-a03-00.dtb"
+            },
+            "e1733" : {
+                "dtb" : "tegra124-ardbeg-e1780-1000-a03-01.dtb"
+            },
+            "e1735" : {
+                "dtb" : "tegra124-ardbeg-e1780-1000-a03-00.dtb"
+            }
+        },
+        "E1792-1100" : {
+            "default" : {
+                "dtb" : "tegra124-ardbeg-e1792-1100-a00-00.dtb"
+            },
+            "e1733" : {
+                "dtb" : "tegra124-ardbeg-e1792-1100-a00-01.dtb"
+            },
+            "e1735" : {
+                "dtb" : "tegra124-ardbeg-e1792-1100-a00-00.dtb"
+            }
+        },
+        "laguna" : {
+            "bases" : [ "&no_nct" ],
+            "default" : {
+                "bct" : "flash_pm358_792.cfg",
+                "cfg" : "laguna_flash.cfg"
+            }
+        },
+        "P1859" : {
+            "bases" : [ "&vcm", "&no_nct" ],
+            "default" : {
+                "bct" : "VCM30T124_2GB_H5TC4G63AFR.bct",
+                "cfg" : "quickboot_snor_android.cfg",
+                "dtb" : "tegra124-ardbeg-p1859.dtb",
+                "sku" : "56"
+            },
+            "sku50" : {
+                "bct" : "VCM30T124_4GB_MT41K512M16.bct",
+                "sku" : "50"
+            }
+        },
+
+        "#references" : "############################################",
+        "&common" : {
+            "default" : {
+                "sku" : "0x1f",
+                "odm" : "0x49c008",
+                "cfg" : "tn8_flash.cfg"
+            }
+        },
+        "&4gb-792" : {
+            "default" : {
+                "bct" : "flash_e1761_4gb_792.cfg"
+            }
+        },
+        "&2gb-792" : {
+            "default" : {
+                "bct" : "flash_e1761_2gb_792.cfg"
+            }
+        },
+        "&2gb-924" : {
+            "default" : {
+                "bct" : "flash_e1761_2gb_924.cfg"
+            }
+        },
+        "&no_nct" : {
+            "default" : {
+                "skip_nct" : true
+            }
+        },
+        "&vcm" : {
+            "default" : {
+                "flash_app" : "bootburn"
+            }
+        }
+    }
+}

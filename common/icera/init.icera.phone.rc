@@ -1,0 +1,83 @@
+# Copyright (c) 2012-2014 NVIDIA Corporation.  All Rights Reserved.
+#
+# NVIDIA Corporation and its licensors retain all intellectual property and
+# proprietary rights in and to this software and related documentation.  Any
+# use, reproduction, disclosure or distribution of this software and related
+# documentation without an express license agreement from NVIDIA Corporation
+# is strictly prohibited.
+
+import init.icera.common.rc
+
+on early-init
+# agpsd socket property
+    setprop agpsd.socket_path "/dev/socket/at_pal"
+
+on init
+# agpsd tty port property
+    setprop agpsd.dev_path "/dev/ttySHM3"
+# mount point for fs_mgr to mount modem partition
+    mkdir /mnt/modem
+
+on post-fs
+   mkdir /mnt/modem/data 0770 root radio
+   mkdir /mnt/modem/data/factory 0770 root radio
+   mkdir /mnt/modem/data/persistent 0770 root radio
+   mkdir /mnt/modem/data/modem 0770 root radio
+
+# Start FIL daemon
+service fil-daemon /vendor/bin/fild
+    class main
+    user radio
+    group log radio
+
+# Start AGPS daemon
+service agps-daemon /vendor/bin/agpsd
+    disabled
+    user radio
+    socket at_pal seqpacket 0666 radio system
+    group system
+
+on property:ril.testmode=2
+    setprop ril.mock_modem.socketname "mock_modem"
+    start mock_modem
+    stop fil-daemon
+    stop ril-daemon
+    start ril-daemon-test
+
+on property:ril.testmode=1
+    setprop ril.mock_modem.socketname ""
+    stop ril-daemon
+    stop ril-daemon-test
+    stop mock_modem
+    start ril-daemon-test
+
+on property:ril.testmode=0
+    setprop ril.mock_modem.socketname ""
+    stop ril-daemon-test
+    stop mock_modem
+    start fil-daemon
+    start ril-daemon
+
+on property:persist.modem.icera.testmode=0
+    stop at-port-forward
+    stop log-port-forward
+    setprop persist.sys.usb.config "mtp,adb"
+    stop ril-daemon
+    stop fil-daemon
+    start fil-daemon
+
+on property:persist.modem.icera.testmode=1
+    setprop persist.sys.usb.config "rndis,acm,adb"
+    stop ril-daemon
+    stop fil-daemon
+    start fil-daemon
+    start at-port-forward
+    start log-port-forward
+
+on property:persist.modem.icera.testmode=2
+    setprop persist.sys.usb.config "rndis,acm,adb"
+    stop ril-daemon
+    stop fil-daemon
+    start fil-daemon
+    start at-port-forward
+    start log-port-forward

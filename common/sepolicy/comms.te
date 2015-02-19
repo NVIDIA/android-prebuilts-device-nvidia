@@ -1,0 +1,38 @@
+# BT sysfs permissions /sys/class/rfkill/rfkill0/state
+allow bluetooth sysfs:file write;
+
+# gpsd - permissions to read/write sys GPIO interface
+allow gpsd sysfs:file write;
+
+#allow hostapd to access symlinks created by wifi_loader
+allow hostapd wifi_data_file:lnk_file read;
+
+# wifi_loader - wifi loader which modifies /data/misc/wifi/*
+type wifi_loader, domain;
+type wifi_loader_exec, exec_type, file_type;
+
+init_daemon_domain(wifi_loader)
+
+allow wifi_loader shell_exec:file rx_file_perms;
+allow wifi_loader wifi_loader_exec:file { execute_no_trans open };
+allow wifi_loader wifi_data_file:file create_file_perms;
+allow wifi_loader wifi_data_file:dir rw_dir_perms;
+allow wifi_loader wifi_data_file:lnk_file { getattr read write create_file_perms };
+allow wifi_loader bluetooth_data_file:dir { search write add_name };
+allow wifi_loader bluetooth_data_file:lnk_file { write create_file_perms };
+allow wifi_loader gps_data_file:dir { search write add_name };
+allow wifi_loader gps_data_file:lnk_file { write create_file_perms };
+allow wifi_loader hci_attach_dev:chr_file { setattr getattr };
+allow wifi_loader gps_device:chr_file { setattr getattr };
+allow wifi_loader device:chr_file { setattr };
+allow wifi_loader devpts:chr_file { read write ioctl };
+allow wifi_loader kernel:system module_request;
+allow wifi_loader self:capability { net_admin dac_override chown sys_module fowner fsetid };
+allow wifi_loader system_prop:property_service set;
+allow wifi_loader property_socket:sock_file write;
+allow wifi_loader sysfs:file read;
+allow wifi_loader system_file:file { execute_no_trans };
+allow wifi_loader proc_wmem_default_writable:file w_file_perms;
+allow wifi_loader proc_wmem_max_writable:file w_file_perms;
+
+type_transition wifi_loader wifi_data_file:sock_file wpa_socket;

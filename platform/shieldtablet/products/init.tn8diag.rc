@@ -1,0 +1,69 @@
+#Copyright (c) 2013 NVIDIA Corporation.  All Rights Reserved.
+#
+#NVIDIA Corporation and its licensors retain all intellectual property and
+#proprietary rights in and to this software and related documentation.  Any
+#use, reproduction, disclosure or distribution of this software and related
+#documentation without an express license agreement from NVIDIA Corporation
+#is strictly prohibited.
+
+on boot
+
+#change PATH
+    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin:/bin
+
+# Disable Launcher Cling
+    setprop ro.test_harness true
+
+# Disable LP0
+    write /sys/power/wake_lock MfgTest
+
+# LED
+    chown system system /sys/class/leds/roth-led/brightness
+    chown system system /sys/class/leds/roth-led/trigger
+    chmod 0666 /sys/class/leds/roth-led/trigger
+
+# Fan Cap Value
+    chmod 0666 /sys/kernel/debug/tegra_fan/temp_control
+    chmod 0666 /sys/kernel/debug/tegra_fan/pwm_cap
+    chmod 0666 /sys/kernel/debug/tegra_fan/target_pwm
+    chmod 0666 /sys/kernel/debug/tegra_fan/tach_enable
+
+# Modify file permission needed by Diag test
+    chmod 0111 /data/mfgtest/CPU/power_utils.sh
+    chmod 0111 /data/mfgtest/CPU/roth_dvfs.sh
+    chmod 0111 /data/mfgtest/CPU/game_testing.sh
+    chmod 0111 /data/mfgtest/thermal/burnCortexA15_linux
+    chmod 0111 /data/mfgtest/thermal/EDPVirus_linux
+    chmod 0111 /data/mfgtest/thermal/run.sh
+    chmod 0111 /data/mfgtest/thermal/thermal_test.py
+    chmod 0444 /data/mfgtest/GPU/gl30.xml
+    chmod 0111 /data/mfgtest/GPU/game_testing.sh
+
+#Battery charger register
+    chmod 0444 /d/regmap/0-006b/registers
+
+#Touch calibration
+    chmod 0666 /sys/devices/virtual/misc/touch/self_test
+
+#Modem binary
+    chmod 0775 /data/bin/atcmd-itf-arm
+
+#Touch parameter
+on property:ro.boot.tp_id=2
+    copy /system/etc/raydium_ts_para_tpk.bin /mnt/factory/touchscreen/raydium_ts_para.bin
+    chown system system /mnt/factory/touchscreen/raydium_ts_para.bin
+
+on property:ro.boot.tp_id=1
+    copy /system/etc/raydium_ts_para_wintek.bin /mnt/factory/touchscreen/raydium_ts_para.bin
+    chown system system /mnt/factory/touchscreen/raydium_ts_para.bin
+
+service stress_test_svc /bin/stress_test.sh
+    class main
+    user root
+    group root
+
+service thorMon /bin/runThorMon.sh
+    class main
+    user root
+    group root
+

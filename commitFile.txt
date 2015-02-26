@@ -286,7 +286,7 @@ c43a2bc9250297f9eba3f324ad98a219446c2bee - common/overlay-common/frameworks/base
 a4055c05651b0537b99e04dea4907154f125531b - common/overlay-common/frameworks/base/core/res/res/xml/storage_list.xml
 5a93445cd823a03ba8716d4cfb22c422310cf70f - common/icera/init.icera.tablet.rc
 f6f56b88a0ed357eecd673983f5b034473e483eb - common/icera/init.icera.phone.rc
-e91d0e39decef517ec16ed11a01e872c04af8e74 - common/icera/init.icera.common.rc
+8b26d2ccecec95e59b5db355eb64705775976699 - common/icera/init.icera.common.rc
 7698a9a39e374c7feedf97a7f74a2d03da6c7f73 - common/icera/sepolicy/gpsd.te
 c6ca363ac7635f8e7a90c583b9e1c3d68e5f9397 - common/icera/sepolicy/icera-crashlogs.te
 ac1801609aefb4a0640c7585baf35ea5a66f7dbf - common/icera/sepolicy/agpsd.te

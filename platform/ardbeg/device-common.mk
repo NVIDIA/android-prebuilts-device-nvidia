@@ -117,6 +117,10 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/jetson_android_fastboot_nvtboot_dtb_emmc_full.cfg:jetson_flash.cfg
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/flash/fastboot.bin:fastboot.bin \
+    $(LOCAL_PATH)/flash/nvflash:nvflash
+
 NVFLASH_FILES_PATH :=
 
 PRODUCT_COPY_FILES += \

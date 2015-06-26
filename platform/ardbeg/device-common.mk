@@ -119,7 +119,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/flash/fastboot.bin:fastboot.bin \
-    $(LOCAL_PATH)/flash/nvflash:nvflash
+    $(LOCAL_PATH)/flash/nvflash:nvflash \
+    $(LOCAL_PATH)/flash/PM375_Hynix_2GB_H5TC4G63AFR_RDA_924MHz.cfg:flash_pm375_924.cfg
 
 NVFLASH_FILES_PATH :=
 

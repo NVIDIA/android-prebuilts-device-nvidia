@@ -144,6 +144,7 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/ueventd.ardbeg.rc:root/ueventd.ardbeg.rc \
   $(LOCAL_PATH)/ueventd.ardbeg.rc:root/ueventd.laguna.rc \
   $(LOCAL_PATH)/ueventd.ardbeg.rc:root/ueventd.tn8.rc \
+  $(LOCAL_PATH)/ueventd.ardbeg.rc:root/ueventd.jetson-tk1.rc \
   $(LOCAL_PATH)/ueventd.ardbeg.rc:root/ueventd.ardbeg_sata.rc \
   $(LOCAL_PATH)/tegra-kbc.kl:system/usr/keylayout/tegra-kbc.kl \
   $(LOCAL_PATH)/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
@@ -219,18 +220,25 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/power.ardbeg.rc:system/etc/power.ardbeg.rc \
     $(LOCAL_PATH)/power.tn8.rc:system/etc/power.tn8.rc \
+    $(LOCAL_PATH)/power.jetson-tk1.rc:system/etc/power.jetson-tk1.rc \
     $(LOCAL_PATH)/init.ardbeg.rc:root/init.ardbeg.rc \
     $(LOCAL_PATH)/init.laguna.rc:root/init.laguna.rc \
     $(LOCAL_PATH)/init.tn8.rc:root/init.tn8.rc \
+    $(LOCAL_PATH)/init.jetson-tk1.rc:root/init.jetson-tk1.rc \
     $(LOCAL_PATH)/init.recovery.tn8.rc:root/init.recovery.tn8.rc \
+    $(LOCAL_PATH)/init.recovery.jetson-tk1.rc:root/init.recovery.jetson-tk1.rc \
     $(LOCAL_PATH)/init.tn8_common.rc:root/init.tn8_common.rc \
+    $(LOCAL_PATH)/init.jetson-tk1_common.rc:root/init.jetson-tk1_common.rc \
     $(LOCAL_PATH)/init.tn8_emmc.rc:root/init.tn8_emmc.rc \
+    $(LOCAL_PATH)/init.jetson-tk1_emmc.rc:root/init.jetson-tk1_emmc.rc \
     $(LOCAL_PATH)/init.ardbeg_sata.rc:root/init.ardbeg_sata.rc \
     $(LOCAL_PATH)/fstab.ardbeg:root/fstab.ardbeg \
     $(LOCAL_PATH)/fstab.tn8:root/fstab.tn8 \
+    $(LOCAL_PATH)/fstab.jetson-tk1:root/fstab.jetson-tk1 \
     $(LOCAL_PATH)/fstab.laguna:root/fstab.laguna \
     $(LOCAL_PATH)/fstab.ardbeg_sata:root/fstab.ardbeg_sata \
     $(LOCAL_PATH)/init.tn8.usb.rc:root/init.tn8.usb.rc \
+    $(LOCAL_PATH)/init.jetson-tk1.usb.rc:root/init.jetson-tk1.usb.rc \
     $(LOCAL_PATH)/../../common/init.nv_dev_board.usb.rc:root/init.nv_dev_board.usb.rc \
     $(LOCAL_PATH)/../../common/init.tlk.rc:root/init.tlk.rc \
     $(LOCAL_PATH)/../../common/init.hdcp.rc:root/init.hdcp.rc

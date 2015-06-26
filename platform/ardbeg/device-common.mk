@@ -114,6 +114,9 @@ NVFLASH_CFG_BASE_FILE := $(NVFLASH_FILES_PATH)/nvflash/tn8_android_fastboot_nvtb
 endif
 endif
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/jetson_android_fastboot_nvtboot_dtb_emmc_full.cfg:jetson_flash.cfg
+
 NVFLASH_FILES_PATH :=
 
 PRODUCT_COPY_FILES += \

@@ -43,6 +43,9 @@ USE_OPENGL_RENDERER := true
 # FIXME: This shouldn't be set here. Should be set in product Makefile for VCM.
 TARGET_KERNEL_VCM_BUILD ?= true
 
+# U-boot
+TARGET_UBOOT_BUILD ?= true
+
 # Quickboot
 TARGET_QUICKBOOT ?= true
 TARGET_QUICKBOOT_PRODUCTION_CONFIG ?= true

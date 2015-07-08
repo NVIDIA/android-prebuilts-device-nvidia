@@ -28,12 +28,10 @@ PRODUCT_COPY_FILES += \
 ifeq ($(PLATFORM_IS_NEXT),1)
 PRODUCT_COPY_FILES += \
     vendor/nvidia/tegra/3rdparty/broadcom/gps/bin/bcm4752_next_64/glgps_nvidiategraandroid:system/bin/glgps_nvidiaTegra2android \
-    vendor/nvidia/tegra/3rdparty/broadcom/gps/bin/bcm4752_next_64/gpslogd_nvidiategraandroid:system/bin/gpslogd \
     vendor/nvidia/tegra/3rdparty/broadcom/gps/bin/bcm4752_next_64/gps.nvidiategraandroid.so:system/lib64/hw/gps.brcm.so
 else
 PRODUCT_COPY_FILES += \
     vendor/nvidia/tegra/3rdparty/broadcom/gps/bin/bcm4752/glgps_nvidiaTegra2android:system/bin/glgps_nvidiaTegra2android \
-    vendor/nvidia/tegra/3rdparty/broadcom/gps/bin/bcm4752/gpslogd_nvidiaTegra2android:system/bin/gpslogd \
     vendor/nvidia/tegra/3rdparty/broadcom/gps/bin/bcm4752/gps.tegra.so:system/lib/hw/gps.brcm.so
 endif
 

@@ -6,6 +6,7 @@ TARGET_DEVICE := shieldtablet
 TARGET_SYSTEM_PROP := device/nvidia/platform/ardbeg/system.prop
 
 BOARD_BUILD_NVFLASH := false
+BOARD_BUILD_NVSECURETOOL := false
 
 APPFILTERCLASS := com.nvidia.appfilter
 # Raydium library version to be used

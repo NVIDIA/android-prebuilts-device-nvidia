@@ -23,5 +23,8 @@ _product_private_path := vendor/nvidia/shieldtablet
 ## ST8 Kernel
 KERNEL_PATH=$(CURDIR)/kernel-shieldtablet8
 
+## Jetson TK1 Kernel
+KERNEL_PATH=$(CURDIR)/kernel
+
 ## common apps for all skus
 $(call inherit-product-if-exists, $(_product_private_path)/wx_common.mk)
